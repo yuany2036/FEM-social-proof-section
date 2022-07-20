@@ -1,0 +1,216 @@
+:root{
+    font-size: 62.5%;
+    --very-dark-magenta: hsl(300, 43%, 22%);
+    --soft-pink: hsl(333, 80%, 67%);
+    --dark-grayish-magenta: hsl(303, 10%, 53%);
+    --light-grayish-magenta: hsl(300, 24%, 96%);
+    --white: hsl(0, 0%, 100%);
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 2rem;
+}
+body{
+    background: url(./images/bg-pattern-bottom-desktop.svg) right bottom no-repeat, url(./images/bg-pattern-top-desktop.svg) left top no-repeat, var(--white);
+    height: 100vh;
+    display: grid;
+}
+h1{
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--very-dark-magenta);
+}
+.section_1 p{
+    color: var(--dark-grayish-magenta);
+    line-height: 25px;
+    font-size: 2.4rem;
+    margin-top: 30px;
+}
+.section_2>div{
+    background-color: var(--light-grayish-magenta);
+    
+    border-radius: 10px;
+    font-weight: 700;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--very-dark-magenta);
+}
+.section_2>div>div{
+    font-size: 1.8rem;
+    margin-left: 20px;
+}
+.section_2 img{
+    margin-right: 8px;
+}
+.review{
+    background-color: var(--very-dark-magenta);
+    border-radius: 10px;
+}
+.attribution{
+    align-self: end;
+}
+
+/* review card layout */
+
+.section_3>div{
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section_3>div>div{
+    display: flex;
+    align-items: center;
+}
+.section_3>div>div>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+.section_3 img{
+    border-radius: 50%;
+    width: 60px;
+}
+.names{
+    color: var(--white);
+    font-weight: 700;
+}
+.status{
+    color: var(--soft-pink);
+}
+.review_text{
+    color: var(--white);
+    line-height: 25px;
+}
+
+/* _______naming grid areas______ */
+
+.section_1{
+    grid-area: info;
+}
+.section_2{
+    grid-area: rating;
+}
+.section_3{
+    grid-area: review;
+}
+.attribution{
+    grid-area: footer;
+}
+.section_2 > div:nth-of-type(1){
+    grid-area: rating_1;
+}
+.section_2 > div:nth-of-type(2){
+    grid-area: rating_2;
+}
+.section_2 > div:nth-of-type(3){
+    grid-area: rating_3;
+}
+#review1{
+    grid-area: review_1;
+}
+#review2{
+    grid-area: review_2;
+}
+#review3{
+    grid-area: review_3;
+}
+
+
+/* _________responsive__________ */
+
+@media (min-width:401px){
+    body{
+        
+        grid-template: 2fr 5fr 1fr 5fr 1.5fr / 1fr 3fr 1fr 3fr 1fr;
+        grid-template-areas: 
+        ". . . . ."
+        ". info . rating ."
+        ". . . . ."
+        ". review review review ."
+        "footer footer footer footer footer";
+    }
+    .section_2{
+        display: grid;
+        grid-template: repeat(3, 5px 60px) / repeat(2, 1fr) 8fr repeat(2, 1fr);
+        grid-template-areas: 
+        ". . . . ."
+        "rating_1 rating_1 rating_1 . ."
+        ". . . . ."
+        ". rating_2 rating_2 rating_2 ."
+        ". . . . ."
+        ". . rating_3 rating_3 rating_3"
+        ". . . . .";
+        row-gap: 5px;
+        align-content: center;
+        /* align-items: center; */
+    }
+    .section_2>div{
+        min-width: 500px;
+    }
+    .section_3{
+        display: grid;
+        grid-template: 20px 20px 1fr 20px 20px / repeat(3, 1fr);
+        grid-template-areas: 
+        "review_1 . . "
+        "review_1 review_2 ."
+        "review_1 review_2 review_3"
+        ". review_2 review_3"
+        ". . review_3";
+        column-gap: 30px;
+    }
+    .section_3>div>div>div{
+        height: 70%;
+    }
+}
+
+@media (max-width:400px){
+    body{
+        width: 100vw;
+        height: 180vh;
+        padding: 1vh 10vw;
+        text-align: center;
+        grid-template: 1fr 5fr 5fr 1fr repeat(3, 5fr) 1.5fr / 1fr;
+        grid-template-areas: 
+        "."
+        "info" 
+        "rating"
+        "."
+        "review"
+        "review"
+        "review"
+        "footer";
+        gap: 10px;
+    }
+    .section_2>div{
+        flex-direction: column;
+        padding-left: 0;
+        padding: 15px;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    h1{
+        font-size: 4rem;
+    }
+    .review>div>div{
+        height: 50px;
+        justify-content: space-between;
+    }
+    .review_text{
+        font-size: 1.5rem;
+        margin-top: 10px;
+        text-align: left;
+    }
+    .section_3{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
